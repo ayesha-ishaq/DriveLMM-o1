@@ -106,7 +106,7 @@ After downloading the nuScenes keyframe data (both images and/or LiDAR point clo
 
 ## Hugging Face Links
 
-- **Model on Hugging Face:** [DriveLMM-o1 Model]([https://huggingface.co/your-username/DriveLMM-o1](https://huggingface.co/ayeshaishaq/DriveLMMo1))
-- **Dataset on Hugging Face:** [DriveLMM-o1 Dataset]([https://huggingface.co/your-username/DriveLMM-o1-dataset](https://huggingface.co/datasets/ayeshaishaq/DriveLMMo1))
+- **Model on Hugging Face:** [DriveLMM-o1 Model](https://huggingface.co/ayeshaishaq/DriveLMMo1)
+- **Dataset on Hugging Face:** [DriveLMM-o1 Dataset](https://huggingface.co/datasets/ayeshaishaq/DriveLMMo1)
 
 
