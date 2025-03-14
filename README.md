@@ -1,4 +1,5 @@
 # DriveLMM-o1: A Step-by-Step Reasoning Dataset and Large Multimodal Model for Driving Scenario Understanding
+[![arXiv](https://img.shields.io/badge/arXiv-Link-orange)](https://arxiv.org/abs/2503.10621v1)  
 
 DriveLMM-o1 is a comprehensive framework designed to advance autonomous driving by combining a novel dataset with a large multimodal model. This repository contains the model, dataset, training scripts, and evaluation tools that underpin our work on improving step-by-step reasoning in complex driving scenarios.
 
