@@ -1,83 +1,56 @@
-# DriveLMM-o1: A Step-by-Step Reasoning Dataset and Large Multimodal Model for Driving Scenario Understanding
-[![arXiv](https://img.shields.io/badge/arXiv-Link-orange)](https://arxiv.org/abs/2503.10621v1)  
+<h2 align="center">DriveLMM-o1: A Step-by-Step Reasoning Dataset and Large Multimodal Model for Driving Scenario Understanding</h2>
 
-DriveLMM-o1 is a comprehensive framework designed to advance autonomous driving by combining a novel dataset with a large multimodal model. This repository contains the model, dataset, training scripts, and evaluation tools that underpin our work on improving step-by-step reasoning in complex driving scenarios.
+![](https://i.imgur.com/waxVImv.png)
 
----
 
-## Overview
+[Ayesha Ishaq](https://github.com/ayesha-ishaq), [Jean Lahoud](https://scholar.google.com/citations?user=LsivLPoAAAAJ&hl=en), [Ketan More](https://github.com/ayesha-ishaq/DriveLMM-o1), [Omkar Thawakar](https://omkarthawakar.github.io/), [Ritesh Thawkar](https://github.com/ayesha-ishaq/DriveLMM-o1), [Dinura Dissanayake](https://github.com/ayesha-ishaq/DriveLMM-o1), [Noor Ahsan](https://github.com/ayesha-ishaq/DriveLMM-o1), [Yuhao Li](https://github.com/ayesha-ishaq/DriveLMM-o1),  [Fahad Shahbaz Khan](https://scholar.google.es/citations?user=zvaeYnUAAAAJ&hl=en), [Hisham Cholakkal](https://scholar.google.com/citations?hl=en&user=bZ3YBRcAAAAJ), [Ivan Laptev](https://mbzuai.ac.ae/study/faculty/ivan-laptev/), [Rao Muhammad Anwer](https://scholar.google.com/citations?hl=en&authuser=1&user=_KlvMVoAAAAJ) and [Salman Khan](https://salman-h-khan.github.io/) 
 
-Autonomous driving requires models to not only produce correct final decisions but also to justify those decisions through logical, interpretable reasoning. The DriveLMM-o1 framework addresses this need by:
 
-- **Integrating Multimodal Inputs:** The model leverages multiview images capturing a complete and detailed view of the driving scene.
-- **Step-by-Step Reasoning:** Each decision is supported by intermediate reasoning steps, making the model’s output more transparent and explainable.
-- **Extensive Dataset and Benchmark:** The DriveLMM-o1 dataset consists of over 18,000 visual question-answer pairs (VQAs) for training and more than 4,000 for testing, with manually curated reasoning annotations covering perception, prediction, and planning, supporting multimodality inputs including multiview images and point clouds.
+**Mohamed bin Zayed University of Artificial Intelligence, UAE**
+
+<h5 align="center"> If you like our project, please give us a star ⭐ on GitHub for the latest updates.</h5>
 
 ---
 
-## Dataset
-![Dataset Example](data/example.drawio.png)
-### Description
-
-The DriveLMM-o1 dataset is designed to evaluate the reasoning capabilities of models in autonomous driving. Each example includes:
-- **Multimodal Inputs:** High-quality multiview images and LiDAR point clouds.
-- **Structured Reasoning:** Detailed annotations with step-by-step explanations that guide the decision-making process.
-- **Diverse Scenarios:** A variety of urban and highway scenes to ensure robustness in real-world environments.
-
-### Data Preparation
-
-**NuScenes Data Requirement:**  
-To use the DriveLMM-o1 dataset, you must download the images and LiDAR point clouds from the nuScenes trainval set. PYou may obtain **only the keyframes** from the nuScenes trainval split.
-
-For download instructions and licensing details, visit the [nuScenes website](https://www.nuscenes.org).
-
-### Dataset Statistics
-
-Below is an overview of the dataset statistics in comparison to existing datasets:
-
-![Dataset Statistics Table](data/dataset_stats.png)
+## 📣 Latest Updates
+- **March-13-2025**: DriveLMM-o1 is released on Arxiv. [Paper](https://arxiv.org/abs/2503.10621v1)
+- **March-12-2025**: *Code, Model & Dataset release.* Model Checkpoint: [HuggingFace](https://huggingface.co/ayeshaishaq/DriveLMMo1). Dataset: [HuggingFace](https://huggingface.co/datasets/ayeshaishaq/DriveLMMo1). Code is available at: [GitHub](https://github.com/ayesha-ishaq/DriveLMM-o1). 🤗
 
 ---
 
-## Benchmark & Comparison
+## 🏆 Contributions
+- **We introduce a dataset and benchmark** specifically designed to assess the reasoning capabilities of models in autonomous driving, capturing diverse real-world scenarios.
+- **We annotate driving scenes** that inherently contain rich inputs, including multiview images, LiDAR point clouds, and temporal information, facilitating the integration of various modalities for future VQA solutions.
+- **We propose a novel evaluation metric** tailored to autonomous driving, measuring the logical coherence and accuracy of model-generated explanations.
+- **We evaluate previous open-source and closed-source models** on our proposed benchmark and introduce a model trained on our step-by-step reasoning dataset. Experimental results show that our model outperforms all models in both reasoning score and final accuracy.
+---
 
-Our benchmark evaluates both the final answer accuracy and the logical consistency of the step-by-step reasoning across various autonomous driving tasks. The following table compares DriveLMM-o1 with several prominent datasets in the autonomous driving domain:
+## 📂 Dataset Overview
+<div align=center>
+<img src="data/dataset_stats.png" width="900px">
+</div>
 
-![Benchmark Results Table](data/benchmark.JPG)
+DriveLMM-o1 dataset includes diverse real-world driving scenarios with structured reasoning annotations. It provides a rich benchmark for evaluating autonomous driving LMMs.
 
-Key metrics have been proposed to assess driving specific reasoning:
-- **Risk Assessment Accuracy**
-- **Traffic Rule Adherence**
-- **Scene Awareness and Object Understanding**
-- **Relevance**
-- **Missing Details**
-
-DriveLMM-o1 outperforms existing LMMs by providing higher reasoning scores and improved decision accuracy on our proposed benchmark.
+### Dataset Examples
+<div align=center>
+<img src="data/example.drawio.png" width="900px">
+</div>
 
 ---
 
-## Model
+## 📊 Benchmark & Results
+### Results Overview
+**Table 1:** Comparison of models based on Final Answer accuracy and Driving-Specific Reasoning Steps Metrics on DriveLMM-o1 Benchmark.
 
-### Architecture & Training
-
-The DriveLMM-o1 model is built upon the InternVL2.5-8B architecture and fine-tuned using LoRA (Low-Rank Adaptation). Key components include:
-
-- **Stitched Multiview Images:** Integrates multiple camera perspectives into a single comprehensive representation.
-- **Dynamic Image Patching:** Handles high-resolution images efficiently by processing them as tiles.
-- **LoRA Finetuning:** Adapts the model efficiently by injecting trainable low-rank matrices into the LLaMA backbone, with only 0.49% of the total parameters being trainable.
-
-### Performance
-
-DriveLMM-o1 demonstrates superior performance in reasoning and final answer accuracy compared to previous open-source models. Its structured reasoning process leads to more reliable and interpretable autonomous driving decisions.
+<div align=center>
+<img src="data/benchmark.JPG" width="900px">
+</div>
 
 ---
 
-## Usage
-
-### Model Usage
-
-You can load the DriveLMM-o1 model using the Hugging Face Transformers library with the following code:
-
+## ⚙️ Model Setup 
+### Load Pretrained Model
 ```python
 from transformers import AutoModel, AutoTokenizer
 import torch
@@ -97,17 +70,58 @@ tokenizer = AutoTokenizer.from_pretrained(
     use_fast=False
 )
 ```
-For detailed usage instructions and additional configurations, please refer to the [OpenGVLab/InternVL2_5-8B](https://huggingface.co/OpenGVLab/InternVL2_5-8B) repository.
-
-### Dataset Usage
-
-After downloading the nuScenes keyframe data (both images and/or LiDAR point clouds), use the relevant preprocessing for your model to integrate the data into your training or inference pipelines.
 
 ---
 
-## Hugging Face Links
+## 🏃 Inference
+To run inference on our model, add the relevant image path to `evaluation/demo.py` and run:
+```bash
+python evaluation/demo.py
+```
 
+---
+
+## 📏 Evaluation
+To reproduce our results, first convert our test set to jsonl format using:
+```bash
+python evaluation/prepare_data_internvl.py
+```
+set the relevent data paths.
+
+then, obtain model output on our test set using `evaluation/inference.py`,
+```bash
+torchrun --nnodes=1 \
+         --node_rank=0 \
+         --master_addr=127.0.0.1 \
+         --nproc_per_node=4 \
+         --master_port=63668 \
+         evaluation/inference.py
+```
+lastly, set the output file path in `evaluation/evaluation.py` and your OpenAI key and run:
+```bash
+python evaluation/evaluation.py
+```
+
+---
+
+## 📚 Dataset & Model Links
 - **Model on Hugging Face:** [DriveLMM-o1 Model](https://huggingface.co/ayeshaishaq/DriveLMMo1)
 - **Dataset on Hugging Face:** [DriveLMM-o1 Dataset](https://huggingface.co/datasets/ayeshaishaq/DriveLMMo1)
 
+---
+
+
+## 📜 Citation
+If you find this work useful, please cite our paper:
+```bibtex
+@misc{ishaq2025drivelmmo1stepbystepreasoningdataset,
+      title={DriveLMM-o1: A Step-by-Step Reasoning Dataset and Large Multimodal Model for Driving Scenario Understanding}, 
+      author={Ayesha Ishaq and Jean Lahoud and Ketan More and Omkar Thawakar and Ritesh Thawkar and Dinura Dissanayake and Noor Ahsan and Yuhao Li and Fahad Shahbaz Khan and Hisham Cholakkal and Ivan Laptev and Rao Muhammad Anwer and Salman Khan},
+      year={2025},
+      eprint={2503.10621},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2503.10621}, 
+}
+```
 
